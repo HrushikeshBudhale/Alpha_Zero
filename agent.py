@@ -39,10 +39,11 @@ class HumanAgent(BaseAgent):
         valid_actions = self.game.get_valid_actions(state)
         while True:
             try:
-                action = int(input(f"Valid actions: {valid_actions}, takes action: "))
+                readable_actions = [i for i in range(len(valid_actions)) if valid_actions[i] == 1]
+                action = int(input(f"Valid actions: \n{readable_actions}, takes action: "))
                 if valid_actions[action] == 1:
                     break
-            except ValueError:
+            except:
                 print("Invalid input")
         return action
 

@@ -10,6 +10,7 @@ class Tournament:
         config = yaml.safe_load(open(config_path, "r"))
         self.N_rounds = config["tournament"]["num_rounds"]
         self.show_games = config["tournament"]["show_games"]
+        self.show_end_state = config["tournament"]["show_end_state"]
         self.game = self.create_game(config["game"])
         p1 = self.create_player(config["player_1"])
         p2 = self.create_player(config["player_2"])
@@ -17,14 +18,14 @@ class Tournament:
     
     def create_player(self, player_settings: dict):
         player_type = player_settings["type"]
-        self.show_games = player_type == "human"
+        self.show_games = player_type == "human" or self.show_games
         return AGENT_TYPES[player_type](self.game, player_settings)
     
     def create_game(self, game_settings: dict):
         game_type = game_settings["type"]
         if game_type == "TicTacToe":
             return TicTacToe(n=game_settings["rows"])
-        elif game_type == "ConnectFour":
+        elif game_type == "ConnectX":
             rows = game_settings["rows"]
             cols = game_settings["cols"]
             in_a_row = game_settings["in_a_row"]
@@ -32,7 +33,7 @@ class Tournament:
     
     def star_playing(self):
         print(f"Starting game of {self.game} with {self.N_rounds} rounds")
-        for i in tqdm(range(self.N_rounds)):
+        for i in tqdm(range(self.N_rounds), leave=False):
             self.log(f"============ Round {i+1}/{self.N_rounds} ============")
             self.log(f"Players: {self.players[1]} vs {self.players[-1]}")
             if self.N_rounds > 1 and i > (self.N_rounds // 2):
@@ -57,7 +58,12 @@ class Tournament:
                 self.players[turn].wins += 1
             else:
                 self.log("Draw!")
+            
+            if self.show_end_state and not self.show_games:
+                print(f"{self.players[turn]} takes action: {action}")
+                print(state)
             self.log("============ Game Over ============")
+            
                 
     def log(self, s: str):
         if self.show_games:
