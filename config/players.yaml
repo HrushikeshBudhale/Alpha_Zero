@@ -1,0 +1,18 @@
+player_1:
+  player_type: random
+  model_path: checkpoints/model_0.pt
+  temperature: 1.0
+  device: cpu
+
+# player_2:
+#   player_type: alphamcts
+#   model_path: checkpoints/model.pt
+#   temperature: 1.0
+#   device: cpu
+
+player_2:
+  player_type: mcts
+  num_searches: 600
+  C: 1.41
+  temperature: 1.0
+  device: cpu
