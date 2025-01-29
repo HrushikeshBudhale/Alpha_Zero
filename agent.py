@@ -2,25 +2,28 @@ import numpy as np
 import torch
 from mcts import MCTS
 from model import ResNet
+from typing import final
 
 class BaseAgent:
     obj_count = 1
-    def __init__(self, game, args):
+    def __init__(self, game, args=None):
         self.object_id = BaseAgent.obj_count
         self.game = game
+        self.wins = 0
         self.args = args
         BaseAgent.obj_count += 1
 
     def get_action(self, state: np.ndarray) -> int:
         raise NotImplementedError
 
+    @final
     def __repr__(self):
         return f"{self.__class__.__name__}_{self.object_id}"
 
 
 class RandomAgent(BaseAgent):
     def __init__(self, game, args):
-        super().__init__(game, args)
+        super().__init__(game)
     
     def get_action(self, state: np.ndarray) -> int:
         valid_actions = self.game.get_valid_actions(state)
@@ -30,7 +33,7 @@ class RandomAgent(BaseAgent):
 
 class HumanAgent(BaseAgent):
     def __init__(self, game, args):
-        super().__init__(game, args)
+        super().__init__(game)
     
     def get_action(self, state: np.ndarray) -> int:
         valid_actions = self.game.get_valid_actions(state)

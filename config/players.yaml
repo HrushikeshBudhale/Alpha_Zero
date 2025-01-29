@@ -1,18 +1,40 @@
-player_1:
-  player_type: random
-  model_path: checkpoints/model_0.pt
-  temperature: 1.0
-  device: cpu
+tournament:
+  num_rounds: 10
+  show_games: false
+
+# ===========================================
+
+game:
+  # settings for playing TicTacToe
+  type: TicTacToe
+  rows: 3 # rows == cols
+
+  # settings for playing Connect4
+  # game: Connect4
+  # rows: 6
+  # cols: 7
+  # in_a_row: 4
+
+# ===========================================
+# player_1:
+#   type: random
+
+# player_1:
+#   type: human
+
+# player_1:
+#   type: random
+#   model_path: checkpoints/model_0.pt
+#   temperature: 1.0
+#   device: cpu
 
 # player_2:
-#   player_type: alphamcts
+#   type: alphamcts
 #   model_path: checkpoints/model.pt
 #   temperature: 1.0
 #   device: cpu
 
 player_2:
-  player_type: mcts
+  type: mcts
   num_searches: 600
   C: 1.41
-  temperature: 1.0
-  device: cpu
