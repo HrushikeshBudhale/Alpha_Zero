@@ -1,5 +1,5 @@
 # AlphaZero
-Alpha Zero algorithm applied to game of TicTacToe and ConnectFour
+AlphaZero and MCTS algorithm applied to game of TicTacToe and ConnectFour
 
 ```
 Starting game of ConnectFour(rows=6, cols=7, in_a_row=4) with 10 rounds
