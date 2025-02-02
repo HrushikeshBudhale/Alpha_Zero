@@ -65,7 +65,7 @@ class ConnectFour:
         return state * player
     
     def get_encoded_state(self, state):
-        encoded_state = np.dstack((state == -1, state == 0, state == 1)).astype(np.float32)
+        encoded_state = np.stack((state == -1, state == 0, state == 1)).astype(np.float32)
         if len(state.shape) == 3: # for batch processing
             encoded_state = encoded_state.transpose(1, 0, 2, 3) # (batch_size, channels, rows, cols)
         return encoded_state
