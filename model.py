@@ -39,7 +39,6 @@ class ResNet(nn.Module):
             nn.ReLU(),
             nn.Flatten(),
             nn.Linear(32 * game.rows * game.cols, game.action_size),
-            nn.Softmax(dim=1)
         )
         
         self.valueHead = nn.Sequential(
