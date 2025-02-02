@@ -1,0 +1,33 @@
+ConnectFour:
+  C: 2
+  learn_iters: 8
+  selfplay_iters: 500 
+  exploration_steps: 1
+  temperature: 1.25
+  dirichlet_epsilon: 0.25
+  dirichlet_alpha: 0.3
+  train_iters: 4
+  num_searches: 600 
+  batch_size: 128
+  learning_rate: 0.0001
+  weight_decay: 0.0001
+  device: cpu
+  model_path: checkpoints/model_connect_four.pt
+  optimizer_path: checkpoints/optimizer_connect_four.pt
+
+TicTacToe:
+  C: 1.41
+  learn_iters: 3
+  selfplay_iters: 500
+  exploration_steps: 1
+  temperature: 1.25
+  dirichlet_epsilon: 0.25
+  dirichlet_alpha: 0.3
+  train_iters: 4
+  num_searches: 60
+  batch_size: 64
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  device: cpu
+  model_path: checkpoints/model_tic_tac_toe.pt
+  optimizer_path: checkpoints/optimizer_tic_tac_toe.pt
