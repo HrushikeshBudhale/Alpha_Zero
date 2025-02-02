@@ -31,7 +31,7 @@ class Tournament:
             in_a_row = game_settings["in_a_row"]
             return ConnectFour(rows, cols, in_a_row)
     
-    def star_playing(self):
+    def start_playing(self):
         print(f"Starting game of {self.game} with {self.N_rounds} rounds")
         for i in tqdm(range(self.N_rounds), leave=False):
             self.log(f"============ Round {i+1}/{self.N_rounds} ============")
@@ -79,7 +79,7 @@ class Tournament:
 
 def main(args):
     tournament = Tournament(args.config)
-    tournament.star_playing()
+    tournament.start_playing()
     tournament.show_results()
     
 
