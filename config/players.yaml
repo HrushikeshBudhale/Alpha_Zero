@@ -1,19 +1,19 @@
 tournament:
   num_rounds: 10
   show_games: false
+  show_end_state: false
 
 # ===========================================
 
-game:
-  # settings for playing TicTacToe
-  type: TicTacToe
-  rows: 3 # rows == cols
+# game:
+#   type: TicTacToe
+#   rows: 3 # rows == cols
 
-  # settings for playing Connect4
-  # game: Connect4
-  # rows: 6
-  # cols: 7
-  # in_a_row: 4
+game:
+  type: ConnectX
+  rows: 6
+  cols: 7
+  in_a_row: 4
 
 # ===========================================
 # player_1:
@@ -22,19 +22,44 @@ game:
 # player_1:
 #   type: human
 
+player_1:
+  type: mcts
+  num_searches: 50
+  C: 1.41 # Typically sqrt(2)
+
 # player_1:
-#   type: random
-#   model_path: checkpoints/model_0.pt
-#   temperature: 1.0
+#   type: alpha_zero
+#   num_searches: 10
+#   C: 1.41
+#   model_path: checkpoints/model_connect_four.pt
+#   model_path: checkpoints/model_tic_tac_toe.pt
+#   temperature: 0.0
+#   exploration_steps: 0
+#   dirichlet_epsilon: 0 # dirichlet is not used
+#   dirichlet_alpha: 0.3 # not used
 #   device: cpu
+
+# ===========================================
 
 # player_2:
-#   type: alphamcts
-#   model_path: checkpoints/model.pt
-#   temperature: 1.0
-#   device: cpu
+#   type: random
+
+# player_2:
+#   type: human
+
+# player_2:
+#   type: mcts
+#   num_searches: 600
+#   C: 1.41
 
 player_2:
-  type: mcts
-  num_searches: 600
+  type: alpha_zero
+  num_searches: 60
   C: 1.41
+  # model_path: checkpoints/model_tic_tac_toe.pt
+  model_path: checkpoints/model_connect_four.pt
+  temperature: 0.0
+  exploration_steps: 0
+  dirichlet_epsilon: 0 # dirichlet noise is used only when training
+  dirichlet_alpha: 0.3 # not used
+  device: cpu
