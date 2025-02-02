@@ -44,7 +44,8 @@ class Tournament:
             state = self.game.get_initial_state()
             while True:
                 self.log(state)
-                action = self.players[turn].get_action(state)
+                players_perspective_state = self.game.get_perspective(state, turn)
+                action = self.players[turn].get_action(players_perspective_state)
                 self.log(f"{self.players[turn]} takes action: {action}")
                 state = self.game.get_next_state(state, action, turn)
                 value, is_terminated = self.game.get_value_and_terminated(state, action)
@@ -71,9 +72,9 @@ class Tournament:
     
     def show_results(self):
         print("============ Results ============")
-        print(f"{self.players[1]} \t wins: {self.players[1].wins}")
-        print(f"{self.players[-1]} \t wins: {self.players[-1].wins}")
-        print(f"Draw: {self.N_rounds - self.players[1].wins - self.players[-1].wins}")
+        print(f"{str(self.players[1]):<20} wins: {self.players[1].wins}")
+        print(f"{str(self.players[-1]):<20} wins: {self.players[-1].wins}")
+        print(f"{"":<20} Draw: {self.N_rounds - self.players[1].wins - self.players[-1].wins}")
 
 
 def main(args):
