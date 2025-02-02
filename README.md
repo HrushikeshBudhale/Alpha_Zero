@@ -1,4 +1,4 @@
-# Alpha_Zero
+# AlphaZero
 Alpha Zero algorithm applied to game of TicTacToe and ConnectFour
 
 ```
