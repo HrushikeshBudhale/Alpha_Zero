@@ -19,22 +19,14 @@ Starting game of ConnectFour(rows=6, cols=7, in_a_row=4) with 10 rounds
 
 This is a concise and from scratch implementation of AlphaZero algorithm applied to game of TicTacToe and ConnectFour for the purpose of learning and experimenting with the algorithm.
 
+
 <p align="center">
   <img src="img/algo1_MCTS.png" alt="Monte Carlo Tree Search" width="400"/>
 </p>
-<p align="center"><i>Monte Carlo Tree Search (MCTS) </i></p>
-
-<div style="display: flex; justify-content: space-between;">
-  <div style="flex: 1; text-align: center;">
-    <img src="img/algo2_selfplay.png" alt="Overview of AlphaZero Algorithm" width="400"/>
-    <p><i>Overview of AlphaZero Algorithm</i></p>
-  </div>
-  <div style="flex: 1; text-align: center;">
-    <img src="img/algo3_ExecuteEpisode.png" alt="" width="400"/>
-    <p><i>Episode Execution Process</i></p>
-  </div>
-</div>
-
+<p align="center">
+  <img src="img/algo2_selfplay.png" alt="Overview of AlphaZero Algorithm" width="400"/>
+  <img src="img/algo3_ExecuteEpisode.png" alt="" width="400"/>
+</p>
 
 ## Usage
 
